@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: py-kafka-consumer-deployment
+  labels:
+    app: py-kafka-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: py-kafka-consumer
+  template:
+    metadata:
+      labels:
+        app: py-kafka-consumer
+    spec:
+      containers:
+      - name: py-kafka-consumer
+        image: py-kafka-consumer:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080

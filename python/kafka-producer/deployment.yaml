@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: py-kafka-producer-deployment
+  labels:
+    app: py-kafka-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: py-kafka-producer
+  template:
+    metadata:
+      labels:
+        app: py-kafka-producer
+    spec:
+      containers:
+      - name: py-kafka-producer
+        image: py-kafka-producer:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
